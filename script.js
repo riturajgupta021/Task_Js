@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${animal.name}</td>
                     <td>${animal.size}</td>
                     <td>${animal.location}</td>
-                    <td><img src="${animal.image}" alt="${animal.name}"></td>
+                    <td><img src="${animal.image}" width="50" alt="${animal.name}"></td>
                     <td>                 
                         <button onclick="${this.tableId}.deleteAnimal('${animal.name}')">Delete</button>
                     </td>
