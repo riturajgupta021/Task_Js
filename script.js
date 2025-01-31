@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.name = name;
             this.size = size;
             this.location = location;
-            this.image = image;
+            this.image = image || 'https://via.placeholder.com/50';
         }
     }
 
@@ -20,26 +20,16 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert("Duplicate animal entry is not allowed.");
                 return;
             }
+            if (!animal.size.match(/^(Small|Medium|Large)$/)) {
+                alert("Size must be 'Small', 'Medium', or 'Large'.");
+                return;
+            }
             this.animals.push(animal);
             this.renderTable();
         }
 
         deleteAnimal(name) {
             this.animals = this.animals.filter(animal => animal.name !== name);
-            this.renderTable();
-        }
-
-        editAnimal(oldName, newAnimal) {
-            const index = this.animals.findIndex(animal => animal.name === oldName);
-            if (index !== -1) {
-                this.animals[index] = newAnimal;
-                this.renderTable();
-            }
-        }
-
-        sortAnimals(field) {
-            if (!this.sortableFields.includes(field)) return;
-            this.animals.sort((a, b) => a[field].localeCompare(b[field]));
             this.renderTable();
         }
 
@@ -52,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${animal.name}</td>
                     <td>${animal.size}</td>
                     <td>${animal.location}</td>
-                    <td><img src="${animal.image}" width="50" alt="${animal.name}"></td>
+                    <td><img src="${animal.image}" alt="${animal.name}"></td>
                     <td>                 
                         <button onclick="${this.tableId}.deleteAnimal('${animal.name}')">Delete</button>
                     </td>
@@ -87,4 +77,31 @@ document.addEventListener("DOMContentLoaded", function () {
     bigCatsTable.renderTable();
     dogsTable.renderTable();
     bigFishTable.renderTable();
+
+    document.getElementById('bigCatsForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('bigCatsName').value;
+        const size = document.getElementById('bigCatsSize').value;
+        const location = document.getElementById('bigCatsLocation').value;
+        const image = document.getElementById('bigCatsImage').value;
+        bigCatsTable.addAnimal(new Animal(name, size, location, image));
+    });
+
+    document.getElementById('dogsForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('dogsName').value;
+        const size = document.getElementById('dogsSize').value;
+        const location = document.getElementById('dogsLocation').value;
+        const image = document.getElementById('dogsImage').value;
+        dogsTable.addAnimal(new Animal(name, size, location, image));
+    });
+
+    document.getElementById('bigFishForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = document.getElementById('bigFishName').value;
+        const size = document.getElementById('bigFishSize').value;
+        const location = document.getElementById('bigFishLocation').value;
+        const image = document.getElementById('bigFishImage').value;
+        bigFishTable.addAnimal(new Animal(name, size, location, image));
+    });
 });

@@ -7,16 +7,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script defer src="script.js"></script>
     <style>
-        .animal-image {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px;
-            width: 50px;
-            transition: transform 0.2s;
-        }
-        .animal-image:hover {
-            transform: scale(1.5);
-        }
         .bold-text {
             font-weight: bold;
         }
@@ -30,6 +20,13 @@
 <body>
     <div class="container mt-4">
         <h2>Big Cats</h2>
+        <form id="bigCatsForm">
+            <input type="text" id="bigCatsName" placeholder="Name" required>
+            <input type="text" id="bigCatsSize" placeholder="Size" required>
+            <input type="text" id="bigCatsLocation" placeholder="Location" required>
+            <input type="text" id="bigCatsImage" placeholder="Image URL">
+            <button type="submit">Add Animal</button>
+        </form>
         <table class="table table-bordered" id="bigCatsTable">
             <thead>
                 <tr>
@@ -44,6 +41,13 @@
         </table>
 
         <h2>Dogs</h2>
+        <form id="dogsForm">
+            <input type="text" id="dogsName" placeholder="Name" required>
+            <input type="text" id="dogsSize" placeholder="Size" required>
+            <input type="text" id="dogsLocation" placeholder="Location" required>
+            <input type="text" id="dogsImage" placeholder="Image URL">
+            <button type="submit">Add Animal</button>
+        </form>
         <table class="table table-bordered" id="dogsTable">
             <thead>
                 <tr>
@@ -58,6 +62,13 @@
         </table>
 
         <h2>Big Fish</h2>
+        <form id="bigFishForm">
+            <input type="text" id="bigFishName" placeholder="Name" required>
+            <input type="text" id="bigFishSize" placeholder="Size" required>
+            <input type="text" id="bigFishLocation" placeholder="Location" required>
+            <input type="text" id="bigFishImage" placeholder="Image URL">
+            <button type="submit">Add Animal</button>
+        </form>
         <table class="table table-bordered" id="bigFishTable">
             <thead>
                 <tr>
